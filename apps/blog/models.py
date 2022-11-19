@@ -14,7 +14,7 @@ class Article(models.Model):
     title=models.CharField(verbose_name='Заголовок',max_length=255)
     text_preview=models.TextField(verbose_name='Текст-превью',null=True,blank=True)
     text=models.TextField(verbose_name='Текст')
-    tags = models.ManyToManyField('Tag',blank=True,verbose_name='Tеги')
+    tags = models.ManyToManyField(to='Tag',blank=True,verbose_name='Tеги')
     publish_date=models.DateTimeField(verbose_name='Дата публикации')
     updated_at=models.DateTimeField(verbose_name='Дата изменения',auto_now=True)
     created_at=models.DateTimeField(verbose_name='Дата создания',auto_now_add=True)
@@ -35,3 +35,5 @@ class Tag(models.Model):
     class Meta:
         verbose_name='Tег'
         verbose_name_plural='Tеги'
+
+
