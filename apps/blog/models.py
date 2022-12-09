@@ -32,6 +32,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
     class Meta:
         verbose_name='Tег'
         verbose_name_plural='Tеги'

@@ -3,5 +3,6 @@
 {% for article in tag_articles%}
     <h4><a href=" {% url 'blog_article_view' article_id=article.id category_id=article.id%} ">{{article.title}}</a></h4>
     <p>{{ article.text_preview }}</p>
+
     <br>
 {% endfor %}
