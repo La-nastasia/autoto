@@ -1,0 +1,94 @@
+.main-menu{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.sidebar{
+    background-color: #1E2939;
+    padding-top: 40px;
+    margin-left: 1200px;
+    height: 1000px;
+}
+.title{
+     color: #FFFFFF;
+    font-style: normal;
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 25px;
+}
+.photo{
+    width: 335px;
+    margin-bottom: 50px;}
+.contacts{
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+.sidebar_title{
+    color: #FFFFFF;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 10px;
+}
+.contact_type{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+.contact_link{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #565e6a;
+}
+.service_list{
+    color: #FFFFFF;
+    padding: 0;
+    margin-left: 17px;
+    margin-bottom: 22px;
+}
+.service_item{
+    color: #FB6D3A;
+}
+.service_text{
+    color:#565e6a;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+}
+.for_partners_list{
+    color: #FFFFFF;
+    padding: 0;
+    margin-left: 17px;
+    margin-bottom: 44px;
+}
+.for_partners_item{
+    color: #FB6D3A;
+}
+.for_partners_text{
+    color:#565e6a;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+}
+.work_hours_list{
+    color: #FFFFFF;
+    padding: 0;
+    margin-left: 17px;
+    margin-bottom: 25px;
+}
+.work_hours_item{
+    color: #FB6D3A;
+}
+.work_hours_text{
+    color:#fff;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+}
