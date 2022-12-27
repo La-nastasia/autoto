@@ -6,10 +6,20 @@
     {% endif %}
     <p>{{ article.text }}</p>
     {% if article.user %}
-        <h5>{{ article.user.first_name}}{{ " " }}{{article.user.last_name}}</h5>
-        {% if article.user.image %}
-            <img class="img-thumbnail" src="{{ article.user.image.url }}" alt="">
-        {% endif %}
+        <div class="text-end">
+            <div class="author">
+                {% if article.user.image %}
+                    <span class="avatar">
+                        <img src="{{ article.user.image_thumbnail.url }}" alt="">
+                    </span>
+                {% endif %}
+                {% if article.user.first_name %}
+                    <span class="author-name">{{ article.user.first_name }} {{ article.user.last_name }}</span>
+                {% else %}
+                    <span class="author-name">{{ article.user.username }}</span>
+                {% endif %}
+            </div>
+        </div>
     {% endif %}
     <p>
         {% for tag in article.tags.all %}
