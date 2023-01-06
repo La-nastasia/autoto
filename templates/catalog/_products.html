@@ -5,7 +5,9 @@
             <div class="col-sm-12 col-md-4">
                 <div class="product">
                     <a href="{{ item.get_absolute_url }}">
+                        {% if item.main_image.image %}
                             <img class="img-thumbnail" src="{{ item.main_image.image_thumbnail.url }}" alt="">
+                        {% endif %}
                         <b class="text-danger product-price">{{ item.price }}</b>
                         <p class="product-name">{{ item.name }}</p>
                     </a>
