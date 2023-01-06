@@ -1,7 +1,5 @@
 from django.views import generic
 from apps.catalog.models import Category, Product
-
-
 class CategoryIndexView(generic.ListView):
     model=Category
     template_name = 'catalog/index (1).html'
@@ -19,6 +17,6 @@ class ProductsByCategoryView(generic.ListView):
         context['category'] = self.category
         context['categories'] = self.categories
         return context
-class ProductsDetailView(generic.ListView):
-    model=Product
+class ProductsDetailView(generic.DetailView):
+    model = Product
     template_name='catalog/product.html'
