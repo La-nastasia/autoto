@@ -15,10 +15,12 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
-                {% if product.quantity > 0 %}
+                {% if product.quantity > 0 and product.quantity > 5  %}
                     <p>Наличие: <b class="text-success">{{ product.quantity }}</b></p>
+                {% elif product.quantity < 5 and product.quantity > 0 %}
+                    <p>Наличие: <b class="text-warning">Заканчивается</b></p>
                 {% else %}
-                    <p>Наличие: <b class="text-success">Нет в наличии</b></p>
+                    <p>Наличие: <b class="text-danger">Нет в наличии</b></p>
                 {% endif %}
                 <b class="text-danger product-price">{{ product.price }}</b>
                 <form action="">
