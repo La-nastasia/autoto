@@ -5,10 +5,11 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django.urls import reverse
 from pilkit.processors import ResizeToFill
 
+from apps.main_1.mixins import MetaTagMixin
 from config.settings import MEDIA_ROOT
 
 
-class Category(MPTTModel):
+class Category(MPTTModel,MetaTagMixin):
     name=models.CharField(verbose_name='Название',max_length=256)
     slug=models.SlugField(unique=True,verbose_name='Слаг (ЧПУ)')
     description= models.TextField(verbose_name='Описание', null=True,blank=True)
@@ -81,7 +82,7 @@ class ProductImage(models.Model):
         verbose_name_plural='Изображения товаров'
 
 
-class Product(models.Model):
+class Product(MetaTagMixin):
     name = models.CharField(verbose_name='Название',max_length=255)
     slug = models.SlugField(verbose_name='Слаг (ЧПУ)',unique=True)
     description = models.TextField(verbose_name='Описание',blank=True,null=True)
