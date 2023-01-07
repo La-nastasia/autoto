@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'treebeard',
     'apps.blog',
     'apps.user',
-    'apps.catalog'
+    'apps.catalog',
+    'apps.main_1'
 ]
 
 MIDDLEWARE = [
