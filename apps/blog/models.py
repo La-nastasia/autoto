@@ -2,11 +2,13 @@ from django.db import models
 from imagekit.models import ProcessedImageField, ImageSpecField
 from pilkit.processors import ResizeToFill
 from django.utils.safestring import mark_safe
+
+from apps.main_1.mixins import MetaTagMixin
 from config.settings import MEDIA_ROOT
 from apps.user.models import User
 
 
-class BlogCategory(models.Model):
+class BlogCategory(MetaTagMixin):
     name=models.CharField(verbose_name='Имя категории',
                           max_length=255)
     # image=models.ImageField(verbose_name="", upload_to='', null=True)
@@ -31,7 +33,7 @@ class BlogCategory(models.Model):
             return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}' '>")
 
     image_tag_thumbnail.short_description='Изображение'
-class Article(models.Model):
+class Article(MetaTagMixin):
     category=models.ForeignKey(to=BlogCategory,verbose_name='Категории', on_delete=models.CASCADE)
     user=models.ForeignKey(to=User, verbose_name="Автор",on_delete=models.CASCADE, blank=True, null=True)
     title=models.CharField(verbose_name='Заголовок',max_length=255)
@@ -58,7 +60,7 @@ class Article(models.Model):
     class Meta:
         verbose_name='Статья'
         verbose_name_plural='Статьи'
-class Tag(models.Model):
+class Tag(MetaTagMixin):
     name=models.CharField(verbose_name='Хештег',max_length=255)
     articles = models.ManyToManyField(Article, blank=True, verbose_name='Статьи с такими тегами')
 
