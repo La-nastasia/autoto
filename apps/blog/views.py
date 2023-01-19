@@ -6,7 +6,9 @@ from apps.blog.models import BlogCategory, Article, Tag
 # Create your views here.
 def blog_category_list(request):
     blog_categories = BlogCategory.objects.all()
-    return render(request, 'blog/category_list.html',{"categories": blog_categories})
+    breadcrumbs = {'current':'Блог'}
+    return render(request, 'blog/category_list.html',{"categories": blog_categories,"breadcrumbs":breadcrumbs})
+
 def article_list(request,category_id):
     articles=Article.objects.filter(category_id=category_id)
     category=BlogCategory.objects.get(id=category_id)
