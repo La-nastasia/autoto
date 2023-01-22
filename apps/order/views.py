@@ -26,3 +26,7 @@ def add_to_cart(request):
         else:
             form.save()
         return render(request,'order/added.html',{'product':cd['product'], 'cart':get_cart_data(cd['user'])})
+@login_required
+def show_cart(request):
+    breadcrumbs = {'current': 'Корзина'}
+    return render(request, 'order/template.html', {'cart':get_cart_data(user=request.user), 'breadcrumbs': breadcrumbs})
