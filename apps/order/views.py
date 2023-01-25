@@ -2,14 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from apps.order.forms import AddToCartForm, CreateOrderForm
 from apps.order.models import Cart
-
+from django.urls import reverse
 def get_cart_data(user):
     total=0
     cart=Cart.objects.filter(user=user).select_related('product')
     for row in cart:
         total += row.quantity * row.product.price
     return {'total': total, 'cart': cart}
-
 
 @login_required
 def add_to_cart(request):
@@ -25,7 +24,8 @@ def add_to_cart(request):
             Cart.objects.filter(id=row.id).update(quantity=row.quantity + cd['quantity'])
         else:
             form.save()
-        return render(request,'order/added.html',{'product':cd['product'], 'cart':get_cart_data(cd['user'])})
+        breadcrumbs = {'current': 'Товар добавлен в корзину'}
+        return render(request,'order/added.html',{'product':cd['product'], 'cart':get_cart_data(cd['user']), 'breadcrumbs': breadcrumbs})
 @login_required
 def show_cart(request):
     breadcrumbs = {'current': 'Корзина'}
@@ -46,7 +46,8 @@ def create_order_view(request):
         if form.is_valid():
             form.save()
             Cart.objects.filter(user=user).delete()
-            return  render(request, 'order/created.html')
+            breadcrumbs = {reverse('show_cart'): 'Корзина', reverse('create_order'): 'Оформление заказа', 'current':'Ваш заказ'}
+            return render(request, 'order/created.html',{'breadcrumbs':breadcrumbs})
         error = form.errors
     else:
         form = CreateOrderForm(data={
@@ -55,4 +56,5 @@ def create_order_view(request):
              'last_name': user.last_name,
               'email': user.email,
         })
-    return render(request, 'order/create.html', {'cart': cart, "error": error, "form": form})
+    breadcrumbs = {reverse('show_cart'):'Корзина','current': 'Оформление заказа'}
+    return render(request, 'order/create.html', {'cart': cart, "error": error, "form": form, 'breadcrumbs': breadcrumbs})
