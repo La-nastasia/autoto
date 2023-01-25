@@ -18,15 +18,17 @@ def user_login(request):
     return render(request, 'user/login.html', {'error': error, "breadcrumbs": breadcrumbs})
 def user_register(request):
     error= None
+    breadcrumbs = {'current': 'Регистрация'}
     if request.method == 'POST':
         form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
+            breadcrumbs = {'current': 'Добро пожаловать'}
             user=form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return render(request, 'user/welcome.html', {'user': user})
+            return render(request, 'user/welcome.html', {'user': user, "breadcrumbs": breadcrumbs})
         error = form.errors
-    return render(request,'user/register.html',{'error': error})
+    return render(request,'user/register.html',{'error': error,"breadcrumbs":breadcrumbs})
 def user_logout(request):
     logout(request)
     return redirect('index')
