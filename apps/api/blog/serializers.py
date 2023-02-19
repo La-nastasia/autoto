@@ -9,7 +9,7 @@ class BlogCategorySerializer(serializers.Serializer):
         model = BlogCategory
         fields = ('id', 'name','image')
 class ArticleWriteSerializer(serializers.ModelSerializer):
-    tag = serializers.ListField(child=serializers.CharField(max_length=64), write_only=True)
+    tags = serializers.ListField(child=serializers.CharField(max_length=64), write_only=True)
     class Meta:
         model = Article
         fields = (
@@ -20,11 +20,11 @@ class ArticleWriteSerializer(serializers.ModelSerializer):
             "text_preview",
             "text",
             "publish_date",
-            "tag"
+            "tags"
         )
 class ArticleReadSerializer(serializers.ModelSerializer):
     category = BlogCategorySerializer()
-    tag = TagSerializer(many=True)
+    tags = TagSerializer(many=True)
     class Meta:
         model = Article
         fields = (
@@ -38,5 +38,5 @@ class ArticleReadSerializer(serializers.ModelSerializer):
             "user",
             "created_at",
             # "image_thumbnail",
-            "tag"
+            "tags"
         )
