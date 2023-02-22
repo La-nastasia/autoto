@@ -47,8 +47,9 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.user',
     'apps.catalog',
-    'apps.main_1',
-    'apps.order'
+    'apps.main',
+    'apps.order',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
