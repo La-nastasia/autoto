@@ -5,7 +5,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django.urls import reverse
 from pilkit.processors import ResizeToFill
 
-from apps.main_1.mixins import MetaTagMixin
+from apps.main.mixins import MetaTagMixin
 from apps.user.models import User
 from config.settings import MEDIA_ROOT
 
