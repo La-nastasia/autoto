@@ -1,0 +1,15 @@
+[
+  {
+    "model": "main.page",
+    "pk": 3,
+    "fields": {
+      "name": "Контакты",
+      "slug": "contacts",
+      "text": "Телефон: +4 444 44 44 44\n\nEmail: autoto@gmail.com",
+      "meta_title": "Контакты",
+      "meta_description": "Связаться с нами",
+      "meta_keywords": "контакты, консультации, заказ по телефонам"
+
+    }
+  }
+]
