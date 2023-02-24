@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'apps.catalog',
     'apps.main',
     'apps.order',
-    'tinymce'
+    'tinymce',
+    'adminsortable2'
 ]
 
 MIDDLEWARE = [
