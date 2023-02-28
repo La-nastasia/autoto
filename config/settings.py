@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.user',
     'apps.catalog',
+    'apps.comments',
     'apps.main',
     'apps.order',
     'tinymce',

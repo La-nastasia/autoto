@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>Твой коммментарий создан. Теперь ты можешь вернуться <a href="{% url "blog_article_view" category_id=category.id article_id=article.id %}">назад</a>.</p>
+{% endblock %}

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from apps.blog.models import BlogCategory, Article, Tag
+from apps.comments.models import Comment
+
 
 # Create your views here.
 def blog_category_list(request):
@@ -17,8 +19,9 @@ def article_list(request,category_id):
 def article_view(request,category_id,article_id):
     category=BlogCategory.objects.get(id=category_id)
     article=Article.objects.get(id=article_id)
+    comments=Comment.objects.filter(article_id=article_id)
     breadcrumbs = {reverse('blog_category_list'): 'Блог', reverse('blog_article_list', args=[category_id]): category.name,  'current': article.title}
-    return render(request,'blog/article_view.html',{"category":category,"article": article, "breadcrumbs": breadcrumbs})
+    return render(request,'blog/article_view.html',{"category":category,"article": article, "comments":comments,"breadcrumbs": breadcrumbs})
 def tag_view(request,tag_id):
     tag = Tag.objects.get(id=tag_id)
     tag_articles = Article.objects.filter(tags=tag_id)
